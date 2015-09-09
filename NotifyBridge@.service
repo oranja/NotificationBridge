@@ -1,0 +1,10 @@
+[Unit]
+Description=Jenkins Notification Bridge Service
+
+[Service]
+ExecStart=/usr/bin/NotifyBridge.py
+Restart=on-failure
+Type=idle
+
+[Install]
+WantedBy=basic.target
