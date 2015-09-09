@@ -15,10 +15,11 @@ Exit the script by pressing Ctrl+C in the console it's running at.
 Installation can be mostly automated, but for now, you'll have to do things yourself and perhaps fiddle with things a bit until everything runs together.
 
 ### Requirements
-- **Tested on**
+* **Tested on**
     - [Fedora] Workstation 22 [4.1.6-200.fc22.x86_64]
     - [KDE] Plasma 5.3.2
     - [Jenkins] v1.628
+
 * **[Jenkins]**
     * **[Notification Plugin]**
 * **[Python 3+]**
@@ -29,40 +30,40 @@ Installation can be mostly automated, but for now, you'll have to do things your
 
 ### Steps
 1) Install dependencies:
-    ```sh
-    $ sudo dnf install python3-flask python3-gobject
-    $ sudo pip3 install Flask-JSON
-    ```
+```sh
+$ sudo dnf install python3-flask python3-gobject
+$ sudo pip3 install Flask-JSON
+```
 2) Add the following content to the end of your `~/.profile` file.
-    ```sh
-    systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
-    systemctl --user import-environment DISPLAY
-    ```
+```sh
+systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
+systemctl --user import-environment DISPLAY
+```
     **_Note:_** Also run these two commands now to allow the script to function properly before restarting the session.
 
 3) Copy the `NotifyBridge.py` script to `/usr/bin/`
     or similiar (you'll need root permissions).
     
     Make sure it has proper access rights.
-    ```sh
-    chmod a+x /usr/bin/NotifyBridge.py
-    ```
+```sh
+chmod a+x /usr/bin/NotifyBridge.py
+```
     
 4) Copy the `NotifyBridge@.service` systemd unit file to `/usr/lib/systemd/user/` (you'll need root permissions).
 
 5) Start the service by running:
-    ```sh
-    $ systemctl --user start NotifyBridge@username
-    ```
+```sh
+$ systemctl --user start NotifyBridge@username
+```
     Where instead of *username* you should put your own username.
     Generally, this should work just fine:
-    ```sh
-    $ systemctl --user start NotifyBridge@$USER
-    ```
+```sh
+$ systemctl --user start NotifyBridge@$USER
+```
     To make the service start automatically at boot:
-    ```sh
-    $ systemctl --user enable NotifyBridge@$USER
-    ```
+```sh
+$ systemctl --user enable NotifyBridge@$USER
+```
 
 6) From the Jenkins dashboard, install the Notification Plugin. Restart Jenkins as required.
 7) For each Jenkins job you want to get notifications for, **Configure** the job, such that under **Job Notifications** you will have two endpoints:
@@ -84,15 +85,15 @@ Installation can be mostly automated, but for now, you'll have to do things your
 
 ## Uninstallation
 1) Stop and disable the service:
-    ```sh
-    $ systemctl --user stop NotifyBridge@$USER
-    $ systemctl --user disable NotifyBridge@$USER
-    ```
-3) Remove the script and unit file
-    ```sh
-    $ sudo rm /usr/bin/NotifyBridge.py
-    $ sudo rm /usr/lib/systemd/user/NotifyBridge@.service
-    ```
+```sh
+$ systemctl --user stop NotifyBridge@$USER
+$ systemctl --user disable NotifyBridge@$USER
+```
+2) Remove the script and unit file
+```sh
+$ sudo rm /usr/bin/NotifyBridge.py
+$ sudo rm /usr/lib/systemd/user/NotifyBridge@.service
+```
 
 ## Troubleshooting
 If something goes wrong, I'm personally sorry, but well, it was predictable. Maybe inevitable.
