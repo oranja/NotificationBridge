@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 ## author: @oranja [ oranja at gmail dot com ]
 #
@@ -6,6 +6,9 @@
 #
 ## Based on the work of @primalcortex
 ## https://primalcortex.wordpress.com/2014/09/23/monit-and-kde-desktop-notifications/
+
+import gi
+gi.require_version('Notify', '0.7')
 
 from gi.repository import Notify
 from flask import Flask, request
