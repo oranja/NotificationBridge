@@ -36,10 +36,10 @@ Installation can be mostly automated, but for now, you'll have to do things your
   $ sudo pip3 install Flask-JSON
   ```
 
-2. Copy the `NotifyBridge.py` script to `/usr/bin/` or similiar (you'll need root permissions).  
+2. Copy the `NotifyBridge.py` script to `/usr/local/bin/` or similiar (you'll need root permissions).  
 Make sure it has proper access rights.
   ```sh
-  chmod a+x /usr/bin/NotifyBridge.py
+  chmod a+x /usr/local/bin/NotifyBridge.py
   ```
    
 3. Copy the `NotifyBridge@.service` systemd unit file to `/usr/lib/systemd/user/` (you'll need root permissions).
@@ -79,7 +79,7 @@ Make sure it has proper access rights.
 
 2. Remove the script and unit file:
   ```sh
-  $ sudo rm /usr/bin/NotifyBridge.py
+  $ sudo rm /usr/local/bin/NotifyBridge.py
   $ sudo rm /usr/lib/systemd/user/NotifyBridge@.service
   ```
 

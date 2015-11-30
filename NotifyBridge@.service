@@ -2,7 +2,7 @@
 Description=Jenkins Notification Bridge Service
 
 [Service]
-ExecStart=/usr/bin/NotifyBridge.py
+ExecStart=/usr/local/bin/NotifyBridge.py
 Restart=on-failure
 Type=idle
 
